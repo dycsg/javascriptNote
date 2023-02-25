@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li{
+            color: rgb(80, 100, 255);
+            font-size: 19px;
+        }
+    </style>
+</head>
+<body>
+    <ul id="color">
+        <li>xs</li>
+        <li>xsx</li>
+        <li>xsxs</li>
+    </ul>
+
+    
+    <script>
+        // id选择器
+        var color=document.getElementById('color');
+        console.log(color);
+
+        // css选择器
+        var color=document.querySelector('#color'); // css选择器是什么这里就填什么
+        console.log(color);
+        
+        // css多个选择器
+        var lis=document.querySelectorAll('#color li');
+        console.log(lis);
+
+        // css多个选择器,需要选择其中一个[数字] 从0开始
+        var lis=document.querySelectorAll("#color li");
+        console.log(lis[1]);
+
+        // css多个选择器 获取到几个元素 length
+        var lis=document.querySelectorAll('#color li');
+        console.log(lis.length);  //等于 3
+
+
+        // 鼠标点击事件
+        lis[0].onclick=function(){
+            console.log('鼠标点击了');
+        };
+
+        // 鼠标移入事件
+        lis[1].onmouseover=function(){
+            console.log('鼠标移入了');
+        };
+        
+        // 鼠标离开事件
+        lis[2].onmouseout=function(){
+            console.log(this);
+        };
+
+
+        // if判断
+        if(0>1){ //  使用< 或 >可以看效果
+            console.log('0是小于1的');
+        };
+        
+
+        if(lis.length==3){                                 //看它是否等于用的是== 不是=
+            console.log('lis的length等于3');         //使用前面lis的length的值进行判断
+        };
+
+
+        // else 条件不满足的时候使用
+        if(lis.length==4){                                  //看它是否等于用的是== 不是=
+            console.log('lis的length的值为4');
+        }else{   
+            console.log('lis的length的不等于4');
+        };
+        
+
+        for(var i=0; i<lis.length; i++){    //这个for循环 是用来操作一组元素的
+            lis[i].onclick=function(){      //给lis的每一个元素添加一个鼠标点击事件
+                this.style.color='red';     //谁点击了就给他添加一个样式 颜色的值
+                //this 谁点了就是谁 
+            }
+        }
+
+        window.onload=function(){
+            // 可以用前面js代码放在这里
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            background: url(./img/01\ \(1\).jpg);
+        }
+        .div{
+
+            margin: 50 auto;
+            
+        }
+        img{
+            width: 150px;
+            height: 100px;
+            
+        }
+    </style>
+</head>
+    <div class="div">
+        <img src="./img/01 (1).jpg" alt="">
+        <img src="./img/01 (2).jpg" alt="">
+        <img src="./img/01 (3).jpg" alt="">
+        <img src="./img/01 (4).jpg" alt="">
+        <img src="./img/01 (5).jpg" alt="">
+    </div>
+<body>
+    <script>
+        var imgs = document.querySelectorAll('img')
+        for(var i = 0; i < imgs.length; i++){
+            imgs[i].onclick = function(){
+                document.body.style.backgroundImage = 'url(' + this.src + ')'
+                // console.log('dianjl');
+            }
+        }
+       
+
+
+    // var trs = document.querySelectorAll('.tr')
+
+    // for(var i = 0; i < trs.length; i++){
+    //     tr[i].onmouseover = function(){
+    //         //鼠标经过事件
+    //         this.className = 'tablebackground'
+    //     }
+    //     tr[i].onmouseout = function(){
+    //         //鼠标离开事件
+    //         this.className = ''
+    //     }
+
+    // }
+    </script>
+</body>
+</html>

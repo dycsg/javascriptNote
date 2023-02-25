@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        div {
+            margin: 100px 100px;
+        }
+
+        li {
+            padding: 5px;
+            background-color: pink;
+        }
+        li a{
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>发布留言</h1>
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <button>发布</button>
+        <ul>
+
+        </ul>
+    </div>
+    <script>
+        $(function () {
+            $("button").on("click", function () {
+                if ($("textarea").val() == "") {
+                    alert("请输入内容")
+                } else {
+                    var li = $("<li></li>")
+                    li.html($("textarea").val() + "<a href='javascript:;'>删除</a>")
+                    $("ul").prepend(li)  //添加li 添加到前面 append是添加到后面
+                    li.slideDown()       //让li有动画
+                    $("textarea").val("") //让输入框里的内容清空
+                   
+                }
+            })
+            // 点击删除
+            $("ul").on("click", "a", function(){
+                $(this).parent().slideUp(function(){  //删除带动画
+                    $(this).remove()  //回调函数
+                    $("a").css("float", "right")  //浮动到右边
+                }) 
+            })
+        })
+    </script>
+</body>
+
+</html>

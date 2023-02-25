@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //利用对象封装自己的数学对象 里面有PI 最大值 和最小值
+        var myMath = {
+            PI: 3.141592653,
+            max: function(){
+                var max = arguments[0];
+                for(var i = 1; i < arguments.length; i++){
+                    if(arguments[i] > max) {
+                        max = arguments[i]
+                    }
+                }
+                return max;
+            },
+            min: function(){
+                var min = arguments[0];
+                for(var i = 1; i < arguments.length; i++){
+                    if(arguments[i] < min) {
+                        min = arguments[i]
+                    }
+                }
+                return min;
+            }
+        }
+        console.log(myMath.PI);
+        console.log(myMath.max(1,8,45,7));
+        console.log(myMath.min(1,8,5,3,5));
+
+
+
+        //绝对值 三个取整方法  ab  floor   cell         round
+
+        console.log(Math.abs(1));  
+        console.log(Math.abs(-1));
+        console.log(Math.abs('pink'));  //NaN
+        // 向下取整 往小了取
+        console.log(Math.floor(1));  //1
+        console.log(Math.floor(1.9)); //1
+        // 向上取整 往大了取
+        console.log(Math.ceil(1));  //2
+        console.log(Math.ceil(1.9)); //2
+        // 四舍五入 其他数字都是四舍五入，但是，.5特殊 是往大了取   正负数都是
+        console.log(Math.round(1.1)); //1
+        console.log(Math.round(1.5)); //2
+        console.log(Math.round(1.9)); //2
+        console.log(Math.round(-1.1)); //-1
+        console.log(Math.round(-1.5)); //-1
+
+
+        //函数返回一个浮点数，伪随机数在范围从0 到小于1，也就是说，从 0（包括 0）往上，但是不包括 1（排除 1），然后您可以缩放到所需的范围。实现将初始种子选择到随机数生成算法;它不能被用户选择或重置  Math.random()
+        //里面不需要跟参数
+        console.log(Math.random());
+
+        function getRandom(min,max){
+            return Math.floor(Math.random() * (max - min + 1)) + min;    //随机方法
+        }
+        console.log(getRandom(1,10));                     
+        // 随机点名
+        var arr = ["丁扬财","王小碰","金舒阳","王勇","谢安","pink"];
+
+        console.log(arr[getRandom(0, arr.length - 1)]);
+
+
+
+        //猜数字案例
+        function getRandom(min,max){
+            return Math.floor(Math.random() * (max - min + 1)) + min;    //随机方法
+        }
+        var random = getRandom();
+        while(true) {
+            var name = prompt("你来猜 请输入1-10整数")
+            if(name > random) {
+                alert("你猜小了")
+            } else if (name < random) {
+                alert("你猜大了")
+            } else {
+                alert("猜对了")
+                break;   //退出整个循环
+            }
+        }
+    </script>
+</body>
+</html

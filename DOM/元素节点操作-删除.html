@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            
+        }
+        
+        .div{
+            margin: 50 auto;
+        }
+        
+    </style>
+</head>
+    <button>删除</button>
+    <ul>
+        <li>熊大</li>
+        <li>熊二</li>
+        <li>光头强</li>
+    </ul>
+
+    <ol>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ol>
+<body>
+    <script>
+        //一.删除元素  父级.removeChild(child)
+        // ul.removeChild(ul.children[0]) 
+        var btn = document.querySelector('button')
+        var ul = document.querySelector('ul')
+        btn.onclick = function(){
+            if(ul.children.length == 0){
+                alert('没有可删除的内容')
+                this.disabled = true    //如果内容删没有了就让按钮变灰
+                
+            } else{
+                ul.removeChild(ul.children[0])   // 否则继续删li元素
+            }
+        }
+
+        //二.复制元素 cloneNode()
+        var ol = document.querySelector('ol')
+        // cloneNode() 括号里面为空或者为false就是浅拷贝  只复制标签不复制标签里的内容
+        // cloneNode('true')  如果括号里面是true就是深拷贝 既复制标签还复制 内容
+        var lili = ol.children[0].cloneNode('true')
+        ol.appendChild(lili)
+    </script>
+</body>
+</html>

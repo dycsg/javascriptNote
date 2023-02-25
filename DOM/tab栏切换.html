@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        
+        .tab{
+            
+            position: relative;
+            top: 100px;
+            left: 350px;
+
+        }
+        .tab_list .current{
+            background-color: red;
+            color: #fff;
+        }
+        .tab_list li{
+            float: left;
+            height: 39px;
+            line-height: 39px;
+            padding: 0 20px;
+            text-align: center;
+            cursor: pointer;
+            border-bottom: 1px solid #000;
+        }
+        .item{
+            display: none;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+    <div class="tab">
+        <div class="tab_list">
+            <ul>
+                <li class="current">商品介绍</li>
+                <li>规格包装</li>
+                <li>售后保障</li>
+                <li>商品评价</li>
+                <li>手机社区</li>
+            </ul>
+        </div>
+        <div class="tab_con">
+            <div class="item" style="display: block;">
+                商品介绍模块
+                <img src="./img/1.jpg" alt="">
+            </div>
+            <div class="item">
+                规格包装模块
+                <img src="./img/2.jpg" alt="">
+            </div>
+            <div class="item">
+                售后保障模块
+                <img src="./img/3.jpg" alt="">
+            </div>
+            <div class="item">
+                商品评价模块
+                <img src="./img/4.jpg" alt="">
+            </div>
+            <div class="item">
+                手机社区模块
+                <img src="./img/1.jpg" alt="">
+            </div>
+        </div>
+    </div>
+<body>
+    <script>
+        //1.点击变色
+        var tab_list = document.querySelector('.tab_list')
+        var lis = document.querySelectorAll('li');
+        var items = document.querySelectorAll('.item')
+
+        for(var i = 0; i < lis.length; i++){
+
+            // 给li设置索引号
+            lis[i].setAttribute('index', i)
+
+            lis[i].onclick = function(){
+                // 其余的li清除 class 这个类
+                for(var i = 0; i < lis.length; i++){
+                    lis[i].className = ''
+                }
+                // 留下自己
+                this.className = "current"
+
+                //2.点击切换栏 显示内容
+                var index = this.getAttribute('index')
+                // console.log(index);
+                // 让其余的item这些div隐藏
+                for(var i = 0; i < items.length; i++){
+                    items[i].style.display = 'none'
+                }
+                // 留下我自己 让对应的item 显示出来
+                items[index].style.display = 'block'
+            }
+        }
+        
+    </script>
+</body>
+</html>

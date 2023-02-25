@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+        // window.onload=function(){
+        //     // 属性表达式
+        //     var input=document.querySelector('input');      
+        //         input.onclick=function(){
+        //         console.log(     
+        //             input.type,      //点的用法：   .加属性名
+        //             input.value,
+        //             input.style.fontSize,      //.的用发法如果遇到有横杠的标签，横杠后面第一个字母要大写
+        //         );
+        //         input.value='cnm';     
+                
+        //         console.log(
+        //             input['type'],
+        //             input['value'],  // 中括号的用法：   ['属性名']      
+        //             input['font-size']
+        //         );
+        //     };
+        // };
+</script>
+<body>
+    <input type="button" value="按钮" style="width: 100px; height: 50px; background: #f00; font-size: 20px;" />
+    <script>
+        var input=document.querySelector('input');
+        input.onclick=function(){
+            console.log(
+                input.type,
+                input.value,
+                input.style.fontSize
+            );
+            input.value='cnm';
+            console.cog(
+                input['type'],
+                input['value'],
+                input['font-size']
+            );
+        };
+
+    </script>
+</body>
+</html>

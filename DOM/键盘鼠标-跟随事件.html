@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+        /* 鼠标指针 none就可以关掉鼠标指针 */
+        /* body{
+            cursor: none;
+        } */
+        img{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+        }
+        input{
+            width: 180px;
+            height: 40px;
+            margin: 50px;
+        }
+        .search{
+            width: 500px;
+            height: 400px;
+            background-color: pink;
+            position: absolute;
+            left: 350px;
+        }
+        .con{
+            display: none;
+            position: relative;
+            background-color: beige;
+            top: 30%;
+            width: 180px;
+            font-size: 24px;
+            height: 40px;
+            padding-left: 3px;
+            overflow: hidden;
+            left: 50px;
+            align-items: center;
+        }
+        .con::after{
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            top: 40px;
+            left: 80px;
+            border: 8px solid #000;
+            border-style: solid dashed dashed;
+            border-color: beige transparent transparent;
+        }
+        .jd{
+            position: absolute;
+            top: 30%;
+        }
+    </style>
+</head>
+    
+<body>
+    <img src="./img/天使.jpg" alt="">
+    <input type="text" name="" id="">
+
+
+    <div class="search">
+     
+        <div class="con"></div>
+        <input type="text" placeholder="请你输入快递单号" class="jd">
+    </div>
+    <script>
+        
+        //鼠标事件对象
+       
+        document.addEventListener('click', function(e){
+        // 1. client 鼠标再网页可视区的x和y坐标
+            console.log(e.clientX);
+            console.log(e.clientY);
+            console.log('-------------------');
+        // 2. page 鼠标再页面文档的x和y坐标
+            console.log(e.pageX);
+            console.log(e.pageY);
+            console.log('-------------------');
+        // 3. screen 鼠标在电脑屏幕的x和y坐标
+            console.log(e.clientX);
+            console.log(e.clientY);
+        })
+        
+
+
+        // 键盘事件
+
+        // 1.键盘按键抬起  keyup
+        document.addEventListener('keyup', function(){
+            console.log('我弹起来了');
+        })
+        // 2.按键按下的时候触发 不能识别功能键 ctrl shift 左右箭头 keypress
+        document.addEventListener('keypress', function(){
+            console.log('我按下了 press');
+        })
+        // 3.按键按下的时候触发 能识别功能键 ctrl shift 左右箭头 keydown
+        document.addEventListener('keydown', function(){
+            console.log('我按下了 down');
+        })
+
+
+
+        // //判断用户按下哪个键 keyCode  返回按键按下 的ASCII码值
+        // //keyup 和 keydown 返回的值不区分大小写     只有keypress  区分大小写
+        // document.addEventListener('keyup', function(e){
+        //     console.log(e);
+        //     console.log('返回的ASCII是：' + e.keyCode);
+        //     // 判断用户按下哪个键
+        //     if(e.keyCode === 65){    //65 a
+        //         alert('你按下了a键')
+                
+        //     }  else{
+        //         alert('没有按下a键')
+                
+        //     }
+        // })
+
+        document.addEventListener('keypress', function(e){
+            console.log(e);
+            console.log('返回的ASCII是：' + e.keyCode);
+        })
+
+
+        //案例 1.鼠标跟随 图标
+        // 1.mousemove 只要我们鼠标移动1px 就会触发这个事件
+        // 2.核心原理 每次鼠标移除，我们获得鼠标坐标，把这个x和y坐标做为图片的top和left值就可以移动图片
+        var img = document.querySelector('img')
+        document.addEventListener('mousemove', function(e){
+            var x = e.pageX
+            var y = e.pageY
+            console.log('x的坐标是' + x ,'y的坐标是' + y);
+        // 3.千万不要忘记给left 和top 添加px 单位
+            img.style.left = x - 50 + 'px'     //图片总大小减图片的一半就可以让鼠标指针居中
+            img.style.top = y - 50 + 'px'
+        })
+
+
+         //案例 2.按下s键 input获得焦点  (focus)
+        var search = document.querySelector('input')
+        console.log(search);
+        document.addEventListener('keyup', function(e){
+            console.log('ASCII值是' + e.keyCode);      //这里可以查看ASCII码
+            if(e.keyCode === 83){
+                search.focus()
+                
+            }
+        })
+
+
+
+        //案例 3.模仿京东快递单号查询
+        var con = document.querySelector('.con')
+        var inpjd = document.querySelector('.jd')
+        inpjd.addEventListener('keyup', function(){
+            if(this.value == ''){
+                con.style.display = 'none'
+            } else{
+                con.style.display = 'block'
+                con.innerText = this.value
+            }
+        })
+    </script>
+</body>
+</html>

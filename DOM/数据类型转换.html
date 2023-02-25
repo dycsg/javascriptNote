@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jianli</title>
+</head>
+<body>
+    <input type="text" value="">
+    <span>+</span>
+    <input type="text" value="">
+    <input type="button" value="=">
+    <strong></strong>
+    <script>
+        let inputs=document.querySelectorAll('input')
+        let strong=document.querySelector('strong')
+        
+        inputs[2].onclick=function(){
+            // strong.innerHTML=inputs[0].value+inputs[1].value
+            strong.innerHTML=parseInt(inputs[0].value)+parseInt(inputs[1].value)     //一定要加parseInt 怕欣特
+        }
+        
+
+        //对象，函数都会转成NaN
+
+
+        console.log(parseInt('100px'))    //输出100  整数
+        console.log(parseInt('px100'))    //输出NaN
+        console.log(parseFloat('100.245fem32'))  //输出100.245
+        console.log(parseFloat('78.21'))    //小数
+        //案例
+        // var year = prompt('请输入你出生年份');  
+        // var age = 2022 - year;
+        // alert('你经年' + age + '岁了');
+
+        //案例2
+        // var srk = prompt('请你输入第一个值');
+        // var srks = prompt('请你输入第二个值');
+        // var zhi = parseFloat(srk) + parseFloat(srks);    
+        // alert('你的结果是' + zhi + '了')
+        
+
+
+        //转 布呃值
+        console.log(Boolean('')) //false
+        console.log(Boolean('小白')); //true
+        
+        //进制转换
+        console.log(parseInt('1000',2))   //8
+        console.log(parseInt('1000',8))       //512
+        console.log(parseInt('1000',16))    //4096
+        console.log(parseInt('1000',1))    //NaN
+
+
+        console.log(isNaN(NaN))    //NaN 
+        console.log(isNaN('js'))    //true
+
+        console.log(isNaN([]))   //false     检测出来的不一定是数字
+        console.log(isNaN(12)) ///false
+
+    </script>
+</body>
+</html>

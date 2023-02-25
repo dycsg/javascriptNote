@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 得放最前面 -->
+  <script src="./动画函数使用-侧边弹出.js"></script>
+  <link rel="stylesheet" href="http://at.alicdn.com/t/c/font_3864033_7wa7b605tf4.css">
+  <style>
+    @font-face {
+      font-family: "iconfont";
+      /* Project id 3864033 */
+      src: url('http://at.alicdn.com/t/c/font_3864033_7wa7b605tf4.woff2?t=1673701782110') format('woff2'),
+        url('//at.alicdn.com/t/c/font_3864033_7wa7b605tf4.woff?t=1673701782110') format('woff'),
+        url('//at.alicdn.com/t/c/font_3864033_7wa7b605tf4.ttf?t=1673701782110') format('truetype');
+    }
+
+    .current {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      background-color: #ff8400;
+    }
+
+    .iconfont {
+      color: #ccc;
+      font-size: 24px;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+    }
+
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      list-style: none;
+    }
+
+    .focus {
+      width: 600px;
+      height: 360px;
+      border: 1px solid #ccc;
+      position: relative;
+      left: 100px;
+      top: 100px;
+    }
+
+    .focus ul {
+      width: 700%;
+      height: 100%;
+      overflow: hidden;
+      top: 0;
+      left: 0;
+      position: absolute;
+    }
+
+    .focus ul li {
+      float: left;
+    }
+
+    img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .arrow-l {
+      display: none;
+      position: absolute;
+      top: 48%;
+      left: 0;
+      z-index: 2;
+
+    }
+
+    .arrow-r {
+      display: none;
+      position: absolute;
+      top: 48%;
+      left: 92.6%;
+      z-index: 2;
+    }
+
+    .circle {
+      position: absolute;
+      z-index: 2;
+      top: 90%;
+      left: 43%;
+      width: 90px;
+      height: 15px;
+      display: flex;
+      background-color: rgba(211, 203, 203, 0.3);
+
+      border-radius: 10px;
+      padding-left: 15px;
+      padding-top: 2px;
+    }
+
+    .circle li {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="focus">
+    <a href="javascript:;" class="arrow-l"><span class="iconfont icon-zuojiantou-"></span></a>
+    <a href="javascript:;" class="arrow-r"><span class="iconfont icon-youjiantou"></span></a>
+    <ul>
+      <li>
+        <a href=""><img src="/img/01 (2).jpg" alt=""></a>
+      </li>
+      <li>
+        <a href=""><img src="/img/01 (3).jpg" alt=""></a>
+      </li>
+      <li>
+        <a href=""><img src="/img/01 (4).jpg" alt=""></a>
+      </li>
+      <li>
+        <a href=""><img src="/img/01 (5).jpg" alt=""></a>
+      </li>
+    </ul>
+    <ol class="circle">
+
+    </ol>
+  </div>
+  <script>
+    var focus = document.querySelector('.focus')
+    var arrow_l = document.querySelector('.arrow-l')
+    var arrow_r = document.querySelector('.arrow-r')
+    var focusWidth = focus.offsetWidth
+
+    // 1.先让鼠标离开轮播图左右按键隐藏，鼠标进去轮播图左右按键显示
+    focus.addEventListener('mouseenter', function () {
+      arrow_l.style.display = 'block'
+      arrow_r.style.display = 'block'
+      clearInterval(timer)
+      timer = null  //清除定时器变量
+    })
+    focus.addEventListener('mouseleave', function () {
+      arrow_l.style.display = 'none'
+      arrow_r.style.display = 'none'
+      timer = setInterval(function(){
+      //手动调用点击事件
+      arrow_r.click()
+    }, 2000)
+    })
+
+    // 2.动态生成li 有多少个图片就多少个li
+    var ul = focus.querySelector('ul')
+    var ol = focus.querySelector('.circle')
+    for (var i = 0; i < ul.children.length; i++) {
+
+      // 创建小li
+      var li = document.createElement('li')
+      // 把他传给ul
+      ol.appendChild(li)
+      // 记入当前小圆圈的索引号通过自定义属性来做
+      li.getAttribute('index', i)
+      // 3.点击li 就给它添加current类 排它思想
+      li.addEventListener('click', function () {
+        // 清除类
+        for (var i = 0; i < ol.children.length; i++) {
+          ol.children[i].className = ''
+        }
+        // 添加类
+        this.className = 'current'
+        // 4.点击小圆圈移动图片 移动的是ul
+        // ul的移动距离 小圆圈的索引号 * 图片的宽度 注意是负值
+        // 当我们点击了小li 的时候就得到当前小li 的索引号
+        var index = this.getAttribute('index')
+        num = index
+        circle = index
+        // console.log(focusWidth);
+        // console.log(index);
+        animate(ul, -index * focusWidth)
+      })
+    }
+    // 给ol添加.current类
+    ol.children[0].className = 'current'
+    // 5.复制第一张图片 li 放到ul后面 实现无缝轮播
+    var first = ul.children[0].cloneNode(true)    //true深拷贝
+    ul.appendChild(first)
+    // 6.点击右边按钮轮播图片
+    var num = 0
+    // 控制小圆圈播放 
+    var circle = 0
+
+    arrow_r.addEventListener('click', function () {
+      if (num == ul.children.length - 1) {
+        ul.style.left = 0
+        num = 0
+      }
+      num++
+      animate(ul, -num * focusWidth)
+      // 8.点击右边按钮让小圆圈跟着一起变化 声明变量控制
+      if (circle == 4) {
+        circle = 0
+      }
+
+      circleChange()
+    })
+    // 9.轮播图左边按钮
+    arrow_l.addEventListener('click', function () {
+      if (num == 0) {
+        num = ul.children.length -1
+        ul.style.left = -num * focusWidth + 'px'
+      }
+      num--
+      animate(ul, -num * focusWidth)
+      // 8.点击右边按钮让小圆圈跟着一起变化 声明变量控制
+      if (circle == 0) {
+        circle = ol.children.length - 1
+      }
+
+    })
+
+    function circleChange(){
+      for (var i = 0; i < ol.children.length; i++) {
+        ol.children[i].className = ''
+      }
+      // 留下当前小圆圈的current类名
+      ol.children[circle].className = 'current'
+    }
+
+    // 10.自动轮播
+    var timer = setInterval(function(){
+      //手动调用点击事件
+      arrow_r.click()
+    }, 2000)
+  </script>
+</body>
+
+</html>

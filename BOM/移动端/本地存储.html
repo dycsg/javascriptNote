@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <button>存储数据</button>
+    <button>获取数据</button>
+    <button>删除数据</button>
+    <button>清空所有数据</button>
+    <script>
+        var inp = document.querySelector('input')
+        var btn = document.querySelectorAll('button')
+
+        // 数据关闭浏览器就没有了
+        btn[0].addEventListener('click', function () {    //存储数据
+            var vla = inp.value;
+            sessionStorage.setItem('uname', vla);
+        })
+        btn[1].addEventListener('click', function () {    //获取数据
+            console.log(sessionStorage.getItem('uname'));
+        })
+        btn[2].addEventListener('click', function () {    //删除数据
+            sessionStorage.removeItem('uname');
+        })
+        btn[3].addEventListener('click', function () {    //清空所有数据
+            sessionStorage.clear()
+        })
+
+
+        // 数据永久有效除非手动删除
+        btn[0].addEventListener('click', function () {    //存储数据
+            var vla = inp.value;
+            localStorage.setItem('uname', vla);
+        })
+        btn[1].addEventListener('click', function () {    //获取数据
+            console.log(localStorage.getItem('uname'));
+        })
+        btn[2].addEventListener('click', function () {    //删除数据
+            locationbar.removeItem('uname');
+        })
+        btn[3].addEventListener('click', function () {    //清空所有数据
+            localStorage.clear()
+        })
+    </script>
+</body>
+</html>

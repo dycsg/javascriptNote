@@ -1,0 +1,94 @@
+ DOM对象转换jquery对象
+// 1.DOM对象转换为jQuery对象
+//我们直接获取视频，得到就是jQuery对象// $( 'video ' );
+ 我们已经使用原生js获取过来DOM对象
+var myvideo = document.querySelector('video');
+// $(myvideo).play(); jquery里面没有play 这个方法
+// 2.jQuery对象转换为DOM对象
+myvideo.play();
+$( 'video ')[o].play()
+$( 'video').get(0).play()
+
+
+1.jQuery 选择器
+
+1.5 jQuery筛选方法(重点)
+
+parent()
+$("li").parent();
+查找父级
+
+children(selector)
+$(“ul").children(""li")
+相当于$("ul>li")，最近一级(亲儿子)
+
+find(selector)
+$("ul").find("li");
+相当于$("ul li""),后代选择器
+
+siblings(selector)
+$(".first").siblings(
+查找兄弟节点，不包括自己本身
+
+nextAll([expr])
+$(".first" ). nextAll()
+查找当前元素之后所有的同辈元素
+
+prevtAl1([expr])
+$(".last" ).prevAll()
+查找当前元素之前所有的同辈元素
+
+检查当前的元素是否含有某个特定的类，如
+hasclass(class)
+$( 'div ' ).hasClass("protected")
+果有，则返回true
+
+eq(index)
+$(""li").eq(2);
+相当于$("li:eq(2)") ,index从0开始
+重点记住: parent() children0 find( siblings0 eq0
+
+点addClass()  添加类 追加类
+点removeClass()  移除类
+点toggleClass()  切换类
+点show()  显示元素
+点head()  隐藏元素
+点toggle() 切换元素
+点sildeDown() 下滑动
+点slideUp() 上滑动
+点slideToggle() 滑动切换
+点fadeIn() 淡入
+点fadeOut()淡出
+点fadeTo()淡入淡出透明度
+点fadeToggle(1000，0.5)淡入淡出切换
+点stop() 停止
+点prop() 获取属性值
+点attr() 获取自定义属性
+点data() 数据缓存
+点html() 获取元素和内容
+点text() 获取元素文本内容
+冒号checked 获取被选中的checked
+点val() 获取表单的value
+点parents() 返回指定的祖先级选择器
+var li = $(<li></li>) 创建元素
+点append() 内部添加元素 最后面
+点prepend() 内部添加元素 最前面
+点after() 外部添加元素 最后面
+点before() 外部添加元素 最前面
+点remove() 删除元素 自杀
+点empty() 删除元素子节点 
+
+width() / height()取得匹配元素宽度和高度值只算width / height
+innerWidth() / innerHieght()取得匹配元素宽度和高度值包含padding
+outerWidth() / outerHeight()取得匹配元素宽度和高度值包含padding . border
+outerWidth(true) / outerHeight(true)取得匹配元素宽度和高度值包含padding . borde、margin
+
+scroll() 页面滚动事件
+scrollTop() 被卷去的头部
+scrollLeft() 被卷去左侧
+
+$ ( "p").off() //解绑p元素所有事件处理程序
+$("p").off( "click")//解绑p元素上面的点击事件后面的foo 是侦听函数名
+$ ( "ul").off("click"，"li");l/解绑事件委托
+
+点trigger() 自动触发事件

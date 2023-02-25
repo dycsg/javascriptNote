@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        
+        .div{
+            /* display: flex; */
+          
+            margin: 50 auto;
+        }
+        input{
+            width: 180px;
+            height: 40px;
+        }
+        .xx{
+            color: red;
+            width: 24px;
+            height: 24px;
+            background-image: url('./img/cuowu.jpg');
+        }
+        .xxzq{
+            color: rgb(0, 255, 34);
+            background-image: url('./img/zheng\ q.png');
+        }
+    </style>
+</head>
+    <div class="div">
+        <input type="text">
+        <div class="xx"></div>
+    </div>
+<body>
+    <script>
+        var ipt = document.querySelector('input')
+        var xx = document.querySelector('div')
+        ipt.onblur = function(){
+            if(this.value.length < 6 || this.value.length > 16){
+                xx.className = 'xx'
+                xx.innerText = '你输入的位数不对要求6~16位'
+            } else{
+                xx.className = 'xxzq'
+                xx.innerText = '你输入的正确'
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+       img{
+        width: 300px;
+        height: 300px;
+        margin-left: 200px;
+       }
+       .box{
+        position: relative;
+        width: 200px;
+        height: 50px;
+        top: 0px;
+        left: 600px;
+        background-color: palegreen;
+       }
+    </style>
+</head>
+    
+<body>
+    <img src="/img/广告图.jpg" alt="">
+
+    <button>停止定时器炸弹</button>
+
+    <div class="box">
+        <button class="begin">开启定时器</button>
+        <button class="stop">关闭定时器</button>
+    </div>
+    <script>
+        //
+        // 1.定时器1 setTimeout 可以直接写funcion 也可以写函数名 毫秒可以省略 默认0  只调用一次
+        // 因为页面可能会有很多定时器 可以给它整个标识符 变量  区分  延迟时间到了就调用
+        setTimeout(function(){
+            console.log('时间到了');
+        },2000)
+
+        function fu(){
+            console.log('下班了');
+        }
+         // 整个变量好区分
+        var dsq1 = setTimeout(fu,3000)  //不需要写括号
+        var dsq2 = setTimeout(fu,5000) 
+
+
+        // 2.五秒关闭广告 
+        var img = document.querySelector('img')
+        setTimeout(function(){
+            img.style.display = 'none'
+        },5000)
+
+
+        // 3.清除定时器 clearTimeout(定时器名)
+        // 要求：点击按钮停止定时器
+        var btn = document.querySelector('button')
+        var timer = setTimeout(function(){
+            console.log('炸弹爆炸了');
+        },3000)
+        btn.addEventListener('click', function(){
+            clearTimeout(timer)
+        })
+
+
+         // 4.定时器2 steInterval 可以直接写funcion 也可以写函数名 毫秒可以省略 默认0
+         //每隔这个延迟时间 ，就去调用这给回调函数 会调用很多次 重复调用这个函数   广告弹窗
+        setInterval(function(){
+            console.log('继续输出');
+        },1000)    //每过一秒输出一次
+        
+
+
+        // 5.清除setIntterval定时器 
+        // 要求：点击按钮停止定时器  点击开启按钮开始定时器
+        var begin = document.querySelector('.begin')
+        var stop = document.querySelector('.stop')
+
+        var timers = null;   //全局变量   null 是一个空对象
+
+        begin.addEventListener('click', function(){
+            timers = setInterval(function(){          //局部变量
+                console.log('丁扬财love赵元清');
+            },1000)
+        })
+        stop.addEventListener('click', function(){
+            clearInterval(timers)
+        })
+    </script>
+</body>
+</html>

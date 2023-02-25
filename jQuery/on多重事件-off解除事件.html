@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            border: 1px solid #000;
+        }
+        .a{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100px;
+            height: 100px;
+            border: 1px solid rgb(173, 37, 37);
+            background-color: aquamarine;
+        }
+        .b{
+            position: absolute;
+            top: 50%;
+            width: 100px;
+            height: 100px;
+            border: 1px solid rgb(207, 119, 119);
+            background-color: rgb(17, 213, 148);
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    
+    <span class="a"></span>
+    <ul>
+        <li>点我呀</li>
+        <li>点我呀</li>
+        <li>点我呀</li>
+    </ul>
+    <ol>·
+
+    </ol>
+    <button>one只触发一次</button>
+    <script>
+        $(function(){ 
+            // 可以绑定多个事件 on
+            $("div").on({
+                click: function(){
+                    $(this).css("background-color", "purple")
+                },
+                mouseleave: function(){
+                    $(this).css("background-color", "red")
+                },
+                mouseenter: function(){
+                    $(this).css("background-color", "green")
+                }
+                
+            })
+            // 第二种方法
+            $(".a").on("mouseenter mouseleave", function(){
+                $(this).toggleClass("b");    //toggleClass 切换类  还可以用其他的切换方法
+            })
+
+            // on 事件委派
+            $("ul").on("click", "li", function(){
+                alert("666")
+                // 绑定事件的是ul 因为事件委托冒泡 所以点击事件是给小li的
+                // 后面添加的标签可以可以给它绑定事件
+            })
+
+            
+
+            // off解除事件
+          //  $("div").off() //里面空的就是把所有的事件解除 可以加上值
+            // $(".div").off("click")
+            // 事件委托的解除方法
+            // $("ul").off("click" ,"li")
+
+
+
+            // one 只触发一次
+            $("button").one("click", function(){
+                alert("只触发一次")
+            })
+        })
+    </script>
+</body>
+</html>

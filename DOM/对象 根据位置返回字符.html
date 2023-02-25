@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //字符串对象 根据字符返回位置 str.indexOf('要查找的字符'，[起始的位置])
+        var str = '刚才大家对此机动车，大就'
+        console.log(str.indexOf('大'));
+        console.log(str.indexOf('大',2)); //从索引号是 3的位置开始往后查找
+
+
+        // 1.charAt(index) 根据位置返回字符   (括号里放索引号)
+        var str = 'andy'
+        console.log(str.charAt(3));  //y
+        //遍历所有字符
+        for(var i = 0; i < str.length; i++) {
+            console.log(str.charAt(i));
+        }
+        
+        // 2.charCodeAt(index) 返回相应索引号的字符ASCll码值 目的：判断用户是否按下了那个键
+        console.log(str.charCodeAt(0));     //97
+
+        // 3. str[index] H5新增
+        console.log(str[3]);  //y
+
+
+        //将两个或者多个数组合并成一个新数组 concat(其他的数组名)
+        var Arr = ['a','b','c','d']
+        var arr = [1,2,3,4]   //在来一个就用逗号隔开
+        console.log(Arr.concat(arr));
+
+        //splice（） 方法通过删除或替换现有元素或者原地添加新的元素来修改数组，并以数组形式返回被修改的内容。此方法会改变原数组。
+        //从第2个开始 删除0 个 增加一个（c)
+        var sp = ['a','b','d','f']
+        sp.splice(2,0,'c')
+        console.log(sp.splice(sp));  //abcdf
+
+        //slice() 方法返回一个新的数组对象，这一对象是一个由 和 决定的原数组的浅拷贝（包括 ，不包括）。原始数组不会被改变
+        //删除第一个值前面的，和第二个值后面的
+        var sc = ['a','b','c','d','e','f']
+        console.log(sc.slice(2,4));  //c d
+    </script>
+</body>
+</html>

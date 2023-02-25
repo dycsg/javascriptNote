@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(223, 214, 214);
+        }
+
+        .box {
+            width: 100%;
+            height: 60px;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .inp {
+            width: 250px;
+            height: 35px;
+            padding-left: 5px;
+
+        }
+
+        li {
+            width: 400px;
+            height: 40px;
+            background-color: darkgray;
+
+            display: flex;
+        }
+
+        .jx,
+        .wc {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        li input {
+            width: 24px;
+            height: 24px;
+            padding-left: 5px;
+        }
+
+        li a {
+            float: right;
+        }
+        .statisticsOL, .statisticsUL{
+            width: 24px;
+            height: 24px;
+            background-color: aquamarine;
+            text-align: center;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <input type="text" placeholder="添加事项" class="inp" id="title" name="title">
+    </div>
+    <div class="jx">
+        <h1>正在进行
+            <ol id="todolist" class="demo">
+
+            </ol>
+        </h1>
+        <span class="statisticsOL"></span>
+    </div>
+    <div class="wc">
+        <h1>已经完成
+            <ul id="donelist">
+
+            </ul>
+        </h1>
+        <span class="statisticsUL"></span>
+    </div>
+    <script>
+        $(function () {
+            // var todolist = [{
+            //     title: '我静态写得相当好',
+            //     done: false
+            // },{
+            //     title: '态写得相',
+            //     done: false
+            // }]
+            // // 1.本地存储只能存储字符串的数据格式，要把数组对象转换为字符串格式 JSON.stringify()。
+            // localStorage.setItem("todo", JSON.stringify(todolist))
+            // var data = localStorage.getItem("todo")
+            // // console.log(typeof data);
+            // // 2.获取本地存储的数据 需要把字符串数据转换为 对象格式 JSON.parse()
+            // data = JSON.parse(data)
+            // // console.log(data[0].title);
+
+            //  本地存储数据格式： {title:$(this).val(), done: false}
+            load()
+            // 1.
+            $("#title").on("keyCode", function (event) {
+                if (event.keyCode === 13) {   //判断用户是否按下回车
+                    // 读取原理本地存储的数据
+                    var local = getDate();
+                    // console.log(local)
+
+                    // 把local数组进行更新数据 把最新的数据追加给local数组
+                    local.push({ title: $(this).val(), done: false })
+                    // 再把这个数组local 存储给本地存储  经常用封装函数
+                    saveDate(local)
+                    // 在清空input的val
+                    $(this).val()
+                }
+            })
+
+            // 3. toDolist 删除操作
+            $('ol, ul').on('click', 'a', function () {
+                // 获取本地存储       调用函数
+                var data = getDate();
+                // console.log(data)
+                //修改数据
+                var index = $(this).attr("index")
+                // console.log(index)
+                data.splice(index, 1)
+                //保存到本地存储   调用函数
+                saveDate(data)
+                //重新渲染页面  调用函数
+                load()
+            })
+
+            // 4.toDoList 正在进行和已完成操作
+            $('ol, ul').on('click', 'input', function () {
+                // 获取本地存储       调用函数
+                var data = getDate();
+                //修改数据
+                var index = $(this).siblings("a").arrt("index")   //arrt()获取元素自定义属性 
+                // console.log(index)
+                data[index].done = $(this).prop("checked")   // prop()获取元素固有属性
+                console.log(data);
+
+                //保存到本地存储   调用函数
+                saveDate(data)
+                //重新渲染页面  调用函数
+                load()
+            })
+
+            // 读取本地存储数据的函数
+            function getDate() {
+                var data = localStorage.getItem("todolist");
+                if (data !== null) {
+                    return JSON.parse(data) //json.parse是把字符串格式 转换成对象格式
+                } else {
+                    return []
+                }
+            }
+
+            // 保存本地存储数据的函数
+            function saveDate(data) {
+                localStorage.setItem("todolist", JSON.stringify(data))  //转换
+            }
+
+            // 渲染加载数据函数
+            function load() {
+                // 读取本地存储的数据
+                var data = getDate();
+                // console.log(data);
+
+                // 遍历之前先清空ol里面数据
+                $('ol,ul').empty()    //empty清空
+
+                var statisticsUL = 0;   //统计已经完成的个数
+                var statisticsOL = 0;   //统计正在进行的个数
+
+                // 遍历这个数据
+                $.each(data, function (i, n) {                                                    //自定义属性 遍历 i
+                    // console.log(n);
+                    // 判断复选框的选中状态与否 是则添加到ul 否则放到ol里面
+                    if (n.done) {
+                        $("ul").prepend("<li> <input type='checkbox'> <p>" + n.title + "</p> <a index=" + i + " href='javascript:; '></a> </li>")
+                        statisticsUL++
+                    } else {
+                        $("ol").prepend("<li> <input type='checkbox' checked='checked'> <p>" + n.title + "</p> <a index=" + i + " href='javascript:; '></a> </li>")
+                        statisticsOL++
+                    }
+
+                })
+                // 再把统计个数渲染到页面
+                $('.statisticsOL').text(statisticsOL)
+                $('.statisticsUL').text(statisticsUL)
+            }
+        
+
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1.do while循环 语法结构
+            // do {
+            //     循环体
+            // }while (条件表达式)
+        //2.执行思路 do while 先执行一次循环体 在判断条件 如果为真true 则执行循环体 否则退出循环
+        var i = 1;
+        do {
+            console.log('ni hao');
+            i++;
+        }while (i <= 100);
+        //不管有没有工资，先干一个月
+
+        // 案例
+            var i = 1;
+            do {
+                console.log('这个人今年'+i+'了');
+                i++;
+            } while(i<= 100);
+        // 案例
+            var sum = 0;
+            var j = 1;
+            do {
+                sum += j;
+                j++;
+            }while(j <=100);
+            console.log(sum);
+        // 案例
+        do {
+            var srk = prompt('你爱我吗？');
+        } while(srk !== '我爱你');          //!== 不等于
+        alert('我也爱你');
+
+
+
+
+        //介绍 break 退出整个循环
+        for (var i = 1; i <= 5; i++) {
+            if(i==3){
+                break;     //只要遇到 break就退出整个循环
+            }
+            console.log('我在吃第'+i+'个包子');
+        }
+
+    </script>
+</body>
+</html>

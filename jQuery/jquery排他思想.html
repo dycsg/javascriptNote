@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.min.js"></script>
+</head>
+<body>
+    <div>
+        <button>点击</button>
+        <button>点击</button>
+        <button>点击</button>
+        <button>点击</button>
+        <button>点击</button>
+        <button>点击</button>
+    </div>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    <script>
+
+
+        $(function(){
+            $('button').click(function(){
+                $(this).css('background','pink')
+                $(this).siblings('button').css('background', '');   //siblings选择自己的兄弟，不包括自己
+                // 链式编程
+                $(this).css('background','pink').siblings('button').css('background', '');   
+                //我的背景颜色变pink 我兄弟的变''
+            })
+        })
+    </script>
+</body>
+</html>

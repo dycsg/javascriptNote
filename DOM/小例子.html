@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>改div</title>
+    <style>
+        li{
+            list-style-type: none;
+            /* 清除li点 */
+        }
+        div{
+            background-color: aquamarine;
+            width: 200px;
+            height: 200px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<script>
+    window.onblur=function(){
+        // 获取
+        var inputs=document.querySelectorAll('input');
+        var div=document.querySelector('div');
+
+        inputs[2].onclick=function(){
+            var name=inputs[0].value;          //获取第一个框里的值
+            var val=inputs[1].value;           //获取第二个框里的值
+            
+            //注意，操作符后面不能跟变量名字，如果需要把变量做为属性的话就用[],并且中括号里的变量不能加引号
+            div.style[name]=val;
+        };
+
+    };
+   
+</script>
+<body>
+    <!-- 第一个 -->
+    <input type="text" value="">
+    <input type="text" value="">
+    <input type="button" value="按钮">
+    <div></div>
+
+
+    <!-- 第二个 -->
+    <h1>留言板</h1>
+    <input type="text" value="">
+    <input type="button" value="按钮">
+    <ul></ul>
+
+
+    <script>
+        // var inputs=document.querySelectorAll('input');
+        // var ul=document.querySelector('ul');
+
+        // inputs[4].onclick=function(){       // [4]  下标  重要
+        //     var val=inputs[3].value;       //获取第一个框里的值
+        //     var text='<li>'+val+'</li>';    //变量：val     字符串li
+        //     // 把变量与字符串平在一起（把字符串分别写出来，然后中间加两个加号，把变量放到加号中间）
+
+
+        //     console.log(ul.innerHTML);
+        //     // 要把老的内容与新的内容平在一起，需要用到+号
+        //     // 老的内容为ul.innerHTML
+        //     // 新的内容为text
+        //     // 并在一起；ul.innerHTML+text
+
+
+        //     ul.innerHTML+=text;     //累加内容
+
+        // };
+
+        var inputs=document.querySelectorAll('input');
+        var ul=document.querySelector('ul');
+        inputs[4].onclick=function(){
+            var val=inputs[3].value;
+            var text='<li>'+val+'</li>';
+
+            console.log(ul.innerHTML);
+            ul.innerHTML+=text;
+        };
+    </script>
+</body>
+</html>

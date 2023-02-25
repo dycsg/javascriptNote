@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width='device-width', initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // while (条件表达式) {
+        //     循环体
+        //      ++
+        // }
+
+        //当条件表达式结果为true 则执行循环体 否则 退出循环
+       // while也要有计数器 初始化变量
+       //  要有操作表达式 完成计数器的更新 防止死循环
+
+        var str = 1;
+        while (1<=100){
+            console.log(str);
+            str++;
+        }
+
+        //案例
+        var i = 1;
+        while (i <= 100){
+            console.log('这个人今年' +i+'了');
+            i++;
+        }
+        //案例
+        var sum = 0;
+        var j = 1;
+        while(j<=100){
+            sum += j;
+            j++;
+        }
+        console.log(sum);
+        //案例
+        var srk = prompt('你爱我吗？');
+        while(srk !== '我爱你') {      // !== 不等于  
+            srk = prompt('你爱我吗？')      //如果不等于我爱你就一直循环 这句
+        };
+        alert('我也爱你啊');    //如果 是 就运行这句
+
+
+
+
+        // 介绍 continue  关键字  退出本次当前次的循环   继续执行剩余次数循环  
+        for( var i =1; i<=5; i++ ){
+            if(i==3){
+                continue;   //只要遇到 continue就退出本次循环 直接跳到i++
+            }
+            console.log('我在吃第'+i+'个包子');
+        }
+            
+        // 案例
+        var sum = 0;
+        for (var i = 1; i<=100; i++){
+            if(i%7 == 0) {
+                continue;
+            }
+            sum += i;
+        }
+        console.log(sum);
+
+
+    </script>
+</body>
+</html>

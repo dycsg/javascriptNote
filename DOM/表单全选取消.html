@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        
+        .div{
+            /* display: flex; */
+          
+            margin: 50 auto;
+        }
+        input{
+            width: 24px;
+            height: 24px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+        <thead>
+            <input type="checkbox" id="j_cbAll">
+        </thead>
+        <br>
+        <tbody id="j_tb">
+            <input type="checkbox" />
+            <input type="checkbox" />
+            <input type="checkbox" />
+            <input type="checkbox" />
+            <input type="checkbox" />
+        </tbody>
+
+<body>
+    <script>
+        var j_cbAll = document.getElementById('j_cbAll')
+        var j_tbs = document.getElementsByTagName('input')
+        j_cbAll.onclick = function(){
+            for(var i = 0; i < j_tbs.length; i++){
+                j_tbs[i].checked = this.checked
+            }
+        }
+        //连起来
+        for(var i = 0; i < j_tbs.length; i++){
+            j_tbs.onclick = function(){
+                var flag = true;
+                for(var i = 0; i < j_tbs.length; i++){
+                    if(!j_tbs[i].checked){
+                        flag = false
+
+                        break
+                    }
+                }
+                j_cbAll.checked = flag
+            }
+           
+        }
+    </script>
+</body>
+</html>

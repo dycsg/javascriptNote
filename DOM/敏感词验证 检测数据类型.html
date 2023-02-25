@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小例子</title>
+    <style>
+        #btn{
+            width: 100px;
+            height: 50px;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            margin-top: 10px;
+            background-color: bisque;
+            border: 1px;
+        }
+    </style>
+    <script> 
+    //    script标签放在前面
+        window.onload=function(){
+
+            // 获取元素标签
+            var btn=document.getElementById('btn');
+            var box=document.getElementById('box');
+
+            // 添加点击事件
+            btn.onclick=function(){
+
+                // 改变样式
+                this.style.backround='#000';    //this 谁点击了就是谁
+                box.style.width='300px';
+                box.style.height='300px';
+                box.style.border='3px solid  #ccc';
+            };
+        };
+    </script>
+</head>
+<body>
+    <button id="btn">按钮</button>
+    <div id="box"></div>
+
+
+    <br><br><br><br><br>
+
+    <h1>敏感词验证</h1>
+
+    <textarea id="area" cols="30" rows="5"></textarea>
+
+    <button id="but">测试</button>
+
+    <i id="res"></i>
+
+    <script>
+        const reg = /sb|cnm/gi  //里面放敏感词
+        //g 修饰符代表的是 执行全局的匹配
+        //i 修饰符代表的是 大小写敏感不匹配
+
+        let area = document.getElementById('area')
+        let but = document.getElementById('but')
+        let res = document.getElementById('res')
+
+        but.onclick = function(){
+            res.innerHTML = area.value.replace(reg,"*")
+        }
+    </script>
+
+
+<script>
+    //检测数据类型
+    console.log(typeof 12)    //number
+    console.log(typeof 'html')    //string
+    console.log(typeof true)    //boolean
+    console.log(typeof undefined)    //undefined
+    console.log(typeof null)    //object
+    console.log(typeof function(){})    //function 函数
+    console.log(typeof [1,2])    //object   数组
+    console.log(typeof {a:12})    //object  对象
+</script>
+</body>
+</html>

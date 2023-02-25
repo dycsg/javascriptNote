@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    window.onload=function(){
+        var inputs=document.querySelectorAll('input'),
+            div=document.querySelector('div'),
+            a=document.querySelector('a'),
+            img=document.querySelector('img');
+
+        console.log(
+            inputs[0].value,     //请输入用户名 
+            inputs[1].value,     //确定
+            div.innerHTML,       // innerHTML获取标签（div）中的所有元素内容      读法：因纳html
+            div.className,       //要想获取calss中的名称内容，要用className
+        );
+
+        console.log(
+            a.href,           //不是绝对地址
+        );
+        console.log(
+            img.src,       //不是绝对地址
+        );
+                                            
+        inputs[1].onclick=function(){       //给元素添加一个点击事件
+            div.innerHTML='<p>这是一段文字</p>'     //给innerHTML中的所有元素内容，赋予一个标签内容
+        };
+
+    };
+</script>
+<body>
+    <input type="text" value="请输入用户名">
+    <input type="button" value="确定">
+    <div class="con"><h3>前端</h3>精神测定你</div>
+    <a href="/属性表达式.html">第一个</a>
+    <img src="/1.jpg" />
+</body>
+</html>

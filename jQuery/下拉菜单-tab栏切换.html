@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.min.js"></script>
+    <style>
+        
+       ul:hover{
+            color: red;
+            
+        }
+       ul li{
+            display: none;
+            
+        }
+        .box{
+            margin-top: 100px;
+            margin-left: 300px;
+        }
+        .boxd img{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <thead>
+        <ul>我的
+            <li>
+                他
+            </li>
+            <li>
+                她
+            </li>
+            <li>
+                它
+            </li>
+        </ul>
+        <ul>收藏
+            <li>你懂的</li>
+            <li>
+                动漫
+            </li>
+            <li>美女</li>
+        </ul>
+        <ul>分享
+            <li>
+                微信
+            </li>
+            <li>
+                QQ
+            </li>
+        </ul>
+        <ul>微博
+            <li>
+                动态
+            </li>
+            <li>
+                私信
+            </li>
+        </ul>
+    </thead>
+    
+    <div class="box">
+        <div class="boxs">
+            <li>小花</li>
+            <li>小清</li>
+            <li>小元</li>
+            <li>小羊</li>
+        </div>
+        <div class="boxd">
+            <img src="/img/1.jpg" alt="">
+            <img src="/img/2.jpg" alt="">
+            <img src="/img/3.jpg" alt="">
+            <img src="/img/4.jpg" alt="">
+        </div>
+    </div>
+
+    <script>
+        $(function(){
+            //下拉菜单
+            // 方案1 
+            // $('ul').mouseover(function(){
+
+            //     $(this).children('li').show()   //show 显示
+                
+            // })  
+            // $('ul').mouseout(function(){
+            //     $(this).children('li').hide();   
+
+            // })
+            // 方案2
+            $('ul').hover(function(){
+                $(this).children('li').slideToggle();
+            })
+
+            // tab栏切换
+            $('.boxs li').mouseover(function(){
+            
+            //    console.log($(this).index());  获得鼠标经过li的索引号
+               var index = $(this).index()
+
+               $('.boxd img').eq(index).show()    //返回给自由选择器  显示
+
+                $('.boxd img').eq(index).siblings().hide()  // 让它兄弟隐藏
+
+                // 链式编程
+                
+            })
+
+        })
+
+        // addClass  添加类 追加类
+        // removeClass  移除类
+        // toggleClass  切换类
+
+
+
+    
+    </script>
+</body>
+</html>

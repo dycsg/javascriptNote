@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 150px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box{
+            width: 300px;
+            height: 200px;
+            border: 2px solid #000;
+            position: relative;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        }
+        #left{
+            position: absolute;
+            top: 45%;
+            left: 0;
+        }
+        #right{
+            position: absolute;
+            top: 45%;
+            left: 90%;
+        }
+        input:focus + div{
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="text" name="" id="">
+    <div></div>
+    <button id="qb" onclick="ddj()">全屏</button>
+    <script>
+        function ddj(){
+            setTimeout(function(){
+                alert("dijdxsw")
+                document.documentElement.requestFullscreen()
+            },2000)
+        }
+
+
+
+    </script>
+   
+    <div class="box">
+        <img src="/1.jpg" id="img">
+        <button id="left">《</button>
+        <button id="right">》</button>
+    </div>
+    <script>
+        let img=document.getElementById('img')
+        let left=document.getElementById('left')
+        let right=document.getElementById('right')
+
+        let n=1   //初始值
+
+        //右按钮
+        right.onclick=function(){
+            n++   //让图片不断累加
+
+            //给n的值限制应该一个范围
+            if(n>4){
+                // n=4    //让他停在最后一张
+                n=1     //这个是无线循环
+            }
+
+            img.src="/"+n+".jpg"    //不能直接用n 加引号  + +   变量和字符串拼接
+        }
+        
+        //左按钮
+        left.onclick=function(){
+            n--   //让图片不断累减
+
+            if(n<1){
+                // n=0
+                n=4
+            }
+            img.src="/"+n+".jpg"    //不能直接用n 加引号  + +    变量和字符串拼接
+        }
+    </script>
+</body>
+</html>

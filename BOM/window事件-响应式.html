@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+        
+        div{
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        window.onload = function(){
+            alert("dd")
+        }
+        // load 先加载window里面的document在加载load
+        window.addEventListener('load', function(){
+            alert('ff')
+        })
+        // BOMContentloaded 可以先加载自己再加载document 效率比load更高  如果有大量图片可以用它
+        document.addEventListener('BOMContentloaded', function(){
+            alert('cc')
+        })
+
+
+        // 1.调整窗口大小加载事件 onresize  响应式
+        window.onresize = function(){
+            console.log('改变了');
+        }
+        // 要求：屏幕小于八百px隐藏，大于八百px显示
+        var div = document.querySelector("div")
+        window.addEventListener('resize', function(){
+            console.log('d改变了');
+            console.log(window.innerWidth);  //获取屏幕宽高
+            if(window.innerWidth <= 800){     //这里不需要加px
+                div.style.display = 'none'
+            } else{
+                div.style.display = 'block'
+            }
+        })
+
+
+        
+    </script>
+</body>
+</html>

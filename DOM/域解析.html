@@ -1,0 +1,67 @@
+<!--
+ * @Author: error: git config user.name && git config user.email & please set dead value or install git
+ * @Date: 2022-12-21 11:15:10
+ * @LastEditors: error: git config user.name && git config user.email & please set dead value or install git
+ * @LastEditTime: 2022-12-21 11:53:54
+ * @FilePath: \Javascript\域解析.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1问
+        // console.log(num);  //报错
+
+        // 2问
+        console.log(num);   //输出undefined  坑1
+        var num = 10;
+
+        //2问 相当于执行了以下代码
+        var num;
+        console.log(num);
+        num = 10;
+        // 这样就不行了
+
+
+
+        // 3问
+        fn()             
+        function fn(){
+            console.log(11);   //正常输出11
+        }
+        
+        
+        
+        // 4问
+        fun()
+        var fun = function(){
+            console.log(22);  //报错
+        }
+        //4问 相当于执行了以下代码
+        var fun;
+        fun();
+        fun = function(){
+            console.log(22);  
+        }
+
+
+
+
+
+        //1.我们js引擎运行js 分两步： 预解析 代码执行
+        //(1) 预解析 js引擎会把js 里面所有的var 还有function 提升到当前作用域的最前面
+        //（2） 代码执行 按照代码书写的顺序从上往下执行
+
+        //2.预解析分为变量预解析(变量提升)  和 函数预解析 (函数提升)
+        //(1) 变量提升 就是把所有的变量声明提升到当前的作用域最前面 不提升赋值操作
+        //(2) 函数提升 就是把所有的函数声明提升到当前作用域的最前面 不调用函数
+    </script>
+</body>
+</html>

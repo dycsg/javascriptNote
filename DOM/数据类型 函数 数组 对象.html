@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//函数
+function fn(v){   //申明函数
+    console.log(v)
+}
+fn(1)    //使用函数
+
+let fn1=function(v){
+    console.log(v)
+}   
+fn1(2)
+
+fn1.k='函数的属性'   //静态
+fn1.show=function(){   //动态
+    console.log('函数的方法')
+}
+console.log(fn1.k)    //使用上面的函数   输出：函数的属性
+console.log('fn1.show')                    //函数的方法
+
+
+    //数组
+let arr=[12,'html',true,undefined,null,{a:12},[1,2,3]]  // 7
+console.log(arr)
+console.log(arr.length)  //数组的长度位数  7
+console.log(arr[0])   // 下标  12
+arr[0]='css'   //css
+console.log(arr) 
+
+
+ //对象数据类型
+let obj={
+    name:'老王',
+    age:'30',
+    height:'180cm',
+    drive:true,
+    'girl-firend':null,
+    'sing':function(){
+        console.log('出没地点太远')
+    },
+    18:'是个好数字'
+}
+//输出
+console.log(obj);
+console.log(obj.name);    //老王
+console.log(obj['girl-firend']);  //null
+obj['sing']();    //出没地点太远
+
+    </script>
+   
+</body>
+</html>

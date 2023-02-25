@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 用charAt() 遍历
+        // 把字符串 存储给对象 如果对象没有该属性，就为1 否则就+1
+        // 遍历对象
+
+         // 1.charAt(index号) 根据位置返回字符   (括号里放索引号)
+        var str = 'xdcoidhoconcncdoi';
+        var o = {};
+        for(var i = 0; i < str.length; i++) {
+            var chars = str.charAt(i)  //chars 是字符串里面的每一个字符
+            if(o[chars]) {  //得到的属性值   是真就++
+                o[chars]++
+            } else{
+                o[chars] = 1
+            }
+        }
+        console.log(o);
+
+        // 遍历对象
+        var max = 0;
+        var ch = ''   
+        for(var k in o) {
+            // k 得到的是属性名
+            // o[k] 得到的是属性值
+            if(o[k] > max){
+                max = o[k]
+                ch = k;
+            }
+        }
+        console.log(max);    //4
+        console.log("最多的是" + ch);  //最多的是c
+
+    </script>
+</body>
+</html>

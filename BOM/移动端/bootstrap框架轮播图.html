@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <!-- <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#555" dy=".3em">First slide</text></svg>
+          </div>
+          <div class="carousel-item">
+            <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Second slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#666"></rect><text x="50%" y="50%" fill="#444" dy=".3em">Second slide</text></svg>
+          </div>
+          <div class="carousel-item">
+            <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Third slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#555"></rect><text x="50%" y="50%" fill="#333" dy=".3em">Third slide</text></svg>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div> -->
+
+    <button type="button" class="btn btn-outline-primary">Primary</button>
+    <button type="button" class="btn btn-outline-secondary">Secondary</button>
+    <button type="button" class="btn btn-outline-success">Success</button>
+    <button type="button" class="btn btn-outline-danger">Danger</button>
+    <button type="button" class="btn btn-outline-warning">Warning</button>
+    <button type="button" class="btn btn-outline-info">Info</button>
+    <button type="button" class="btn btn-outline-light">Light</button>
+    <button type="button" class="btn btn-outline-dark">Dark</button>
+
+ 
+    <button type="button" class="btn btn-primary" id="liveAlertBtn">显示警告框（alert）</button>
+    <script>
+      // NOTICE!!! Initially embedded in our docs this JavaScript
+// file contains elements that can help you create reproducible
+// use cases in StackBlitz for instance.
+// In a real project please adapt this content to your needs.
+// ++++++++++++++++++++++++++++++++++++++++++
+
+/*!
+ * JavaScript for Bootstrap's docs (https://getbootstrap.com/)
+ * Copyright 2011-2022 The Bootstrap Authors
+ * Copyright 2011-2022 Twitter, Inc.
+ * Licensed under the Creative Commons Attribution 3.0 Unported License.
+ * For details, see https://creativecommons.org/licenses/by/3.0/.
+ */
+
+/* global bootstrap: false */
+
+(() => {
+  'use strict'
+
+  // --------
+  // Tooltips
+  // --------
+  // Instantiate all tooltips in a docs or StackBlitz page
+  document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    .forEach(tooltip => {
+      new bootstrap.Tooltip(tooltip)
+    })
+
+  // --------
+  // Popovers
+  // --------
+  // Instantiate all popovers in a docs or StackBlitz page
+  document.querySelectorAll('[data-bs-toggle="popover"]')
+    .forEach(popover => {
+      new bootstrap.Popover(popover)
+    })
+
+  // -------------------------------
+  // Toasts
+  // -------------------------------
+  // Used by 'Placement' example in docs or StackBlitz
+  const toastPlacement = document.getElementById('toastPlacement')
+  if (toastPlacement) {
+    document.getElementById('selectToastPlacement').addEventListener('change', function () {
+      if (!toastPlacement.dataset.originalClass) {
+        toastPlacement.dataset.originalClass = toastPlacement.className
+      }
+
+      toastPlacement.className = `${toastPlacement.dataset.originalClass} ${this.value}`
+    })
+  }
+
+  // Instantiate all toasts in a docs page only
+  document.querySelectorAll('.bd-example .toast')
+    .forEach(toastNode => {
+      const toast = new bootstrap.Toast(toastNode, {
+        autohide: false
+      })
+
+      toast.show()
+    })
+
+  // Instantiate all toasts in a docs page only
+  const toastTrigger = document.getElementById('liveToastBtn')
+  const toastLiveExample = document.getElementById('liveToast')
+  if (toastTrigger) {
+    toastTrigger.addEventListener('click', () => {
+      const toast = new bootstrap.Toast(toastLiveExample)
+
+      toast.show()
+    })
+  }
+
+  // -------------------------------
+  // Alerts
+  // -------------------------------
+  // Used in 'Show live toast' example in docs or StackBlitz
+  const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+  const alertTrigger = document.getElementById('liveAlertBtn')
+
+  const appendAlert = (message, type) => {
+    const wrapper = document.createElement('div')
+    wrapper.innerHTML = [
+      `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+      `   <div>${message}</div>`,
+      '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+      '</div>'
+    ].join('')
+
+    alertPlaceholder.append(wrapper)
+  }
+
+  if (alertTrigger) {
+    alertTrigger.addEventListener('click', () => {
+      appendAlert('Nice, you triggered this alert message!', 'success')
+    })
+  }
+
+  // --------
+  // Carousels
+  // --------
+  // Instantiate all non-autoplaying carousels in a docs or StackBlitz page
+  document.querySelectorAll('.carousel:not([data-bs-ride="carousel"])')
+    .forEach(carousel => {
+      bootstrap.Carousel.getOrCreateInstance(carousel)
+    })
+
+  // -------------------------------
+  // Checks & Radios
+  // -------------------------------
+  // Indeterminate checkbox example in docs and StackBlitz
+  document.querySelectorAll('.bd-example-indeterminate [type="checkbox"]')
+    .forEach(checkbox => {
+      if (checkbox.id.includes('Indeterminate')) {
+        checkbox.indeterminate = true
+      }
+    })
+
+  // -------------------------------
+  // Links
+  // -------------------------------
+  // Disable empty links in docs examples only
+  document.querySelectorAll('.bd-content [href="#"]')
+    .forEach(link => {
+      link.addEventListener('click', event => {
+        event.preventDefault()
+      })
+    })
+
+  // -------------------------------
+  // Modal
+  // -------------------------------
+  // Modal 'Varying modal content' example in docs and StackBlitz
+  const exampleModal = document.getElementById('exampleModal')
+  if (exampleModal) {
+    exampleModal.addEventListener('show.bs.modal', event => {
+      // Button that triggered the modal
+      const button = event.relatedTarget
+      // Extract info from data-bs-* attributes
+      const recipient = button.getAttribute('data-bs-whatever')
+
+      // Update the modal's content.
+      const modalTitle = exampleModal.querySelector('.modal-title')
+      const modalBodyInput = exampleModal.querySelector('.modal-body input')
+
+      modalTitle.textContent = `New message to ${recipient}`
+      modalBodyInput.value = recipient
+    })
+  }
+
+  // -------------------------------
+  // Offcanvas
+  // -------------------------------
+  // 'Offcanvas components' example in docs only
+  const myOffcanvas = document.querySelectorAll('.bd-example-offcanvas .offcanvas')
+  if (myOffcanvas) {
+    myOffcanvas.forEach(offcanvas => {
+      offcanvas.addEventListener('show.bs.offcanvas', event => {
+        event.preventDefault()
+      }, false)
+    })
+  }
+})()
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+        
+        .div{
+            height: 100px;
+            width: 100px;
+            position: absolute;
+            left: 0;
+            background-color: pink;
+        }
+        .box{
+            height: 150px;
+            width: 150px;
+            position: absolute;
+            left: 0;
+            top: 150px;
+            background-color: green;
+
+        }
+        span{
+            height: 200px;
+            width: 200px;
+            position: absolute;
+            left: 0;
+            top: 400px;
+            background-color: yellow;
+
+        }
+    </style>
+</head>
+    <div class="div"></div>
+    <div class="box"></div>
+    <span></span>
+<body>
+    <script>
+        var div = document.querySelector('.div')
+        //动画原理
+        // 1．获得盒子当前位置  offsetLeft
+        // 2．让盒子在当前位置加上1个移动距离
+        // 3．利用定时器不断重复这个操作
+        // 4．加一个结束走时器的条件  
+        // 5．注意此元素需要添加定位  position: absolute   ;，才能使用element.style.left
+        var timer = setInterval(function(){
+            if(div.offsetLeft >= 400){
+                clearInterval(timer)
+            }else{
+                div.style.left = div.offsetLeft + 2 + 'px'
+            }
+            
+        }, 30)
+   
+
+        // 封装动画函数
+        // obj目标对象   target目标位置
+        var box = document.querySelector('.box')
+        var span = document.querySelector('span')
+        function animate(obj, targae){
+            obj.timer = setInterval(function(){       //性能优化 本来是var timer   obj.timer 不用单独开辟空间  重要
+            if(obj.offsetLeft >= targae){        // div  400  分别改成 形参就是封装函数 再调用
+                clearInterval(obj.timer)          //性能优化  本来值是timer  obj.timer 不用单独开辟空间  重要
+            }else{
+                obj.style.left = obj.offsetLeft + 2 + 'px'
+            }
+            
+        }, 30)
+        }
+        // 调用函数
+        animate(box, 500)
+        animate(span, 600)
+
+        // 如果给它添加点击事件发现bug就先清除以前的定时器 保留一个定时器运行 clearInterval(obj.timer)       
+    </script>
+</body>
+</html>

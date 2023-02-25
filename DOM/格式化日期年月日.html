@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var date = new Date();
+        console.log(date.getFullYear());  //返回当前年份2023
+        console.log(date.getMonth() + 1);    //返回的月份小一个月 需要加一
+        console.log(date.getDate());  //  返回当前日
+        console.log(date.getDay());   //返回当前星期几，周一返回的是1 周六返回的是6 星期天返回的是0 
+        
+        // 需求写一个2023年1月1日星期天
+        var date = new Date();
+        var Fullyear = date.getFullYear();
+        var Month = date.getMonth() + 1;
+        var dates = date.getDate();
+        var arr = ["星期一","星期二","星期三","星期四","星期五","星期六","星期天"]; 
+        var day = date.getDay();    //索引号对上面数组的索引号
+        console.log(Fullyear + "年" + Month + "月" + dates + "日 " + arr[day]);
+
+
+        // 格式化日期
+        var date = new Date();
+        console.log(date.getHours());//返回时
+        console.log(date.getMinutes()); //返回分
+        console.log(date.getSeconds()); //返回秒
+
+        // 封装一个 时分秒  格式08：09：09  要求函数（）
+        function getTime(){
+            var time = new Date();
+            var h = time.getHours();
+            h = h < 10 ? '0' + h : h     //三元表达式 
+            var m = time.getMinutes();
+            m = m < 10 ? '0' + m : m     //当m 小于10时？ 补个0  否则返回  ：m
+            var s = time.getSeconds();
+            s = s < 10 ? '0' + s : s
+            return h + ":" + m + ":" + s;
+        }
+        console.log(getTime());
+    </script>
+</body>
+</html>

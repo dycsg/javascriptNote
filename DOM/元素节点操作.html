@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+        
+        .div{
+            margin: 50 auto;
+        }
+        
+    </style>
+</head>
+    <div class="box">
+        <span class="boxs"></span>
+    </div>
+
+    <ul>
+        <li></li>
+    </ul>
+
+    <ol>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ol>
+
+    <div>兄弟节点 熊大</div>
+    <span>兄弟节点 熊二</span>
+
+    <ul>
+        <li>123</li>
+    </ul>
+<body>
+    <script>
+        // 1.父节点 parentNode
+        // 这里不需要获取box元素 直接有用parentNode
+        var boxs = document.querySelector('.boxs')
+        console.log(boxs.parentNode);  //<span class="box"></span>
+
+        //2.子节点  children
+        var ul = document.querySelector('ul')
+        // 这里不需要获取li元素 直接有用 children
+        console.log(ul.children);   //<li></li>
+
+        //3.获取一个元素里的 第一个子节点  三个方法  firstChild  firstElementChild  children[索引号]
+        var ol = document.querySelector('ol')
+        console.log(ol.firstChild);  //1
+
+        console.log(ol.firstElementChild);
+
+        console.log(ol.children[0]);    //经常用 重要
+
+        //4. 获取一个元素里的 最后一个子节点  三个方法  lastChild  lastElementChild  children[ length -1]
+        var ol = document.querySelector('ol')
+        console.log(ol.lastChild);  //4
+
+        console.log(ol.lastElementChild);
+
+        console.log(ol.children[ol.children.length - 1]);    //经常用 重要
+
+
+        //5.兄弟节点  nextSibling上一个  previousSibling下一个    nextElementSibling  previousElementSibling 
+        
+
+
+        //页面想要添加一个新的元素 1.创建元素 2.添加元素
+        // 6.创建createElement('')    添加 父级.appendChild(子级) 节点元素节点   
+
+        var li = document.createElement('li') //创建
+
+        var ul = document.querySelector('ul') 
+        ul.appendChild(li)          //添加  追加元素    加到后面   常用重要
+
+        var lili = document.createElement('li')
+        ul.insertBefore(lili, ul.children[0])   //添加到第一个    加到前面
+
+
+
+        
+    </script> 
+</body>
+</html>

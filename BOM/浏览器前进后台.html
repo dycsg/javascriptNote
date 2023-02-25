@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+        
+        .div{
+            margin: 50 auto;
+        }
+        
+    </style>
+</head>
+    
+<body>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <script>
+        // history对象方法  三个 
+        var btns = document.querySelectorAll('button')
+
+        // back()       后退功能  
+        btns[0].addEventListener('click', function(){
+            history.back()
+            console.log('后退了');
+        })
+
+        // forward()    前进功能
+        btns[1].addEventListener('click', function(){
+            history.forward()
+            console.log('前进了');
+        })
+
+        // go()         前进后退功能都有  正负数
+        btns[2].addEventListener('click', function(){
+            history.go(1)   //1就是前进一页
+            console.log('go前进了');
+        })
+        btns[3].addEventListener('click', function(){
+            history.go(-1)   //1就是后退一页
+            console.log('go后退了');
+        })
+    </script>
+</body>
+</html>

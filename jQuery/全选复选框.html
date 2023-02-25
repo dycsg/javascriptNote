@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            margin: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="max">
+        <input type="checkbox" name="" id="" class="checkall">
+    </div>
+    <div class="min">
+        <input type="checkbox" name="" id="" class="j-checkbox">
+        <input type="checkbox" name="" id="" class="j-checkbox">
+        <input type="checkbox" name="" id="" class="j-checkbox">
+        <input type="checkbox" name="" id="" class="j-checkbox">
+    </div>
+    <input type="checkbox" name="" id="">
+    <script>
+        $(function(){
+            $('.checkall').change(function() {
+                $('.checkall').prop('checked',true),$(".j-checkbox").prop('checked')
+            })
+        })
+    </script>
+</body>
+</html>

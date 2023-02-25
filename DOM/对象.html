@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //声明对象
+        var dog = {
+            name: "可可",
+            type: "阿拉斯加犬",
+            age: "5岁",
+            color: red,
+            skill: function() {
+                console.log(bark);
+                console.log(showfilm);
+            }
+        }
+
+        //调用方法
+        console.log(dog.name);
+        console.log(dog["type"]);
+    
+        //    函数调用方法
+        dog.skill();
+
+
+
+
+        //用new object创建对象
+        var obj = new Object(); //创建以空对象
+        obj.nuem = "张三丰";   //插入内容
+        obj.age = 18;
+        obj.sex = "男";
+        obj.sayhi = function(){
+            console.log(hi);
+        };
+
+        console.log(obj.nuem);
+        console.log(obj[age]);
+        obj.sayhi();
+
+        //案例
+        var mingren = new Object()
+        mingren.name = "鸣人";
+        mingren.sex = "男";
+        mingren.age = "19岁";
+        mingren.skill = function(){
+            console.log("分身术");
+        }
+
+
+
+        //前面的创建对象只能创建一个，所以用构造函数就可以解决
+        //构造函数创建对象 找相同的属性 例 性别 姓名 年龄。。。
+        function Star(name,age,sex){
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+            this.sing = function(){
+                console.log("歌");
+            }
+        }
+        var zjl = new Star("周杰伦",32,"男")
+        var ldh = new Star("刘德华",18,"男")
+        console.log(Star.name);
+        console.log(Star[sex]);
+        Star.sing()
+        //构造函数不需要return就可以返回结果 调用一定要用new
+
+
+
+
+
+        // 遍历对象  for.. in..    
+        var obj = {
+            nuem: "DYC",
+            age: 18,
+            sex: "男",
+            fn: function() {
+                console.log(nb);
+            }
+        }
+        for(var k in obj) {                   //变量名通常用 k
+            console.log(k);  //输出的属性名
+            console.log(obj[k]); //obj[k]得到的是属性值
+        }
+
+
+
+        //案例 ：电脑
+        var computer = {
+            color: pink,
+            weight:"1.5千克",
+            pinpai: "联想",
+            xinghao: "小新",
+            recreation: function(){
+                console.log("看电影");
+                console.log("听音乐");
+                console.log("玩游戏");
+            }
+        }
+        
+        //案例 ：按钮
+        var button = {
+            width: "50px",
+            height: "60px",
+            background: pink,
+            onclick: function(){
+                alert("点击了")
+            }
+        }
+
+        //案例 ：车
+        var vehicle = {
+            weight: "1.5吨",
+            color: pink,
+            paizi: "宝马",
+            dong: function(){
+                console.log("拉人");
+                console.log("拉货");
+            }
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <script>
+        console.log(location.search);   //?uname=dyc    login input输入的内容
+        //1.先去掉？号  用substr('起始的位置'，截取几个字符 这个不给参数默认截取到最后面)
+        var params = location.search.substr(1)
+        console.log(params);
+        // 2.利用= 把字符串分割为数组split('=')
+        var arr = params.split('=')    //因为 uname=dyc 里面的是等于号
+        console.log(arr);   //数组 uname dyc
+        var div = document.querySelector('div')
+        
+        div.innerHTML = arr[1] + '欢迎您'       
+       
+    </script>
+</body>
+</html>

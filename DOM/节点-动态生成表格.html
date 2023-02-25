@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+        table{
+            position: relative;
+            top: 100px;
+            left: 40%;
+        }
+        thead{
+            border: none;
+        }
+        
+        thead tr{
+            background-color: aquamarine;
+            color: #000;
+            border: none;
+        }
+        thead th{
+            padding: 15px;
+        }
+
+        tbody td{
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ccc;
+            padding-top: 5px;
+            background-color: beige;
+            text-align: center;
+           
+        }
+    </style>
+</head>
+    
+<body>
+    <table cellspacing="0">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        // 1.准备数据
+        var dates = [
+        {
+            name: '丁扬财',
+            subject: 'javascript',
+            score: 100
+        },
+        {
+            name: '赵元清',
+            subject: 'javascript',
+            score: 100
+        },
+        {
+            name: '王勇',
+            subject: 'javascript',
+            score: 90
+        },
+        {
+            name: '谢艳玲',
+            subject: 'javascript',
+            score: 10
+        },
+    ]
+    // 2.往tbody里面创建行有多少个就创建行 length
+    var tbody = document.querySelector('tbody')
+    for(var i = 0; i < dates.length; i++){  //tr
+        //1.创建行 tr
+        var tr = document.createElement('tr')
+        tbody.appendChild(tr)
+
+        //2.行里面再创建列td  td的数量取决于每个对象里面的属性个数  for循环遍历对象 dates【i】
+
+        for(var k in dates[i]){    //td                 k得到的是属性名   k[k]得到的是属性值
+             //创建列  td
+            var td =document.createElement('td')
+
+            //把对象里面属性值 dates[i][k] 给 td 
+            td.innerHTML = dates[i][k]
+
+            tr.appendChild(td)
+        }
+
+        // 3.创建带删除的链接 的td
+        var td = document.createElement('td')
+        td.innerHTML = '<a href="javascript:;">删除</a>'
+        tr.appendChild(td)
+    }
+
+     // 删除功能
+     var as = document.querySelectorAll('a')
+        for(var i = 0; i < as.length; i++){
+            as[i].onclick = function(){
+                //点击a 删除所在的行tr(链接 的父级 的父级 )
+                tbody.removeChild(this.parentNode.parentNode)
+            }
+           
+        }
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./动画函数使用-侧边弹出.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+            background-color: black;
+        }
+        
+        .sliderbar{
+            background-color: pink;
+            width: 60px;
+            height: 200px;
+            margin: 100px auto;
+            position: relative;
+
+        }
+        .slider{
+            background-color: #ff8400;
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+        .con{
+            background-color: #ff8400;
+            width: 180px;
+            height: 60px;
+            display: none;
+            
+            position: absolute;
+            border: 1px solid #ccc;
+            padding-left: 20px;
+            left: 0px;
+            top: 0;
+            line-height: 60px;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sliderbar">
+        <div class="slider"><我的</div>
+        <div class="con">问题反馈</div>
+        
+    </div>
+    <script>
+        var slider = document.querySelector('.slider')
+        var con = document.querySelector('.con')
+        slider.addEventListener('mouseenter', function(){
+            con.style.display = 'block'
+            animate(con, -140, function(){
+                slider.innerHTML = '<'
+            })
+           
+        })
+        slider.addEventListener('mouseleave', function(){
+            con.style.display = 'none'
+            animate(con, 0, function(){
+                slider.innerHTML = '>'
+            })
+            
+        })
+    </script>
+</body>
+</html>

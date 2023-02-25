@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span{
+            height: 200px;
+            width: 200px;
+            position: absolute;
+            left: 0;
+            top: 400px;
+            background-color: yellow;
+
+        }
+    </style>
+</head>
+<body>
+    <span></span>
+    <button>
+        走起来500
+    </button>
+    <script>  
+    // 给缓动动画添加回调函数  动起来后改变颜色
+        var span = document.querySelector('span')
+        function animate(obj, targae, hdhs){        //第三个值是 回调函数
+
+            clearInterval(obj.timer)
+
+            obj.timer = setInterval(function(){       //性能优化 本来是var timer   obj.timer 不用单独开辟空间  重要
+            
+              
+                 //动画缓动效果原理  ：(目标值-所在位置) / 10      10 份数可变
+                //步长值写到定时器里面
+                //要把我们步长值改为整数 不要出现小数的问题
+                var setp = (targae - obj.offsetLeft) / 10
+                setp = setp > 0 ? Math.ceil(setp) : Math.floor(setp)     //判断是正数还是负数 
+
+                if(obj.offsetLeft == targae){        // div  400  分别改成 形参就是封装函数 再调用
+                    clearInterval(obj.timer)          //性能优化  本来值是timer  obj.timer 不用单独开辟空间  重要
+
+                    //回调函数 添加到定时器结束的时候
+                    hdhs()
+
+                }else{
+                    obj.style.left = obj.offsetLeft + setp + 'px'
+                }
+            
+            }, 15)
+        }
+
+
+        var btn = document.querySelector('button')
+
+        btn.addEventListener('click', function(){
+            animate(span, 500, function(){           //回调函数 function
+                span.style.background = 'red'
+            })
+        })
+    </script>
+</body>
+</html>

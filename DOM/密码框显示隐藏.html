@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        
+        .div{
+            /* display: flex; */
+          
+            margin: 50 auto;
+        }
+        img{
+            width: 24px;
+            height: 24px;
+            background-image: url();
+        }
+    </style>
+</head>
+    <div class="div">
+        <input type="password">
+        
+        <img src="./img/biyan.jpg" alt="" class="eye">
+        
+    </div>
+<body>
+    <script>
+        var inp = document.querySelector('input')
+        var eye = document.querySelector('img')
+        var flag = 0
+        eye.onclick = function(){
+            if(flag == 0){
+                inp.type = 'text'
+                eye.src = './img/zhengyan.jpg'
+                flag = 1
+            } else{
+                inp.type = 'password'
+                eye.src = './img/biyan.jpg'
+                flag = 0
+            }
+        }
+    </script>
+</body>
+</html>

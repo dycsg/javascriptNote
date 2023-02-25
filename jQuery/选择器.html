@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.min.js"></script>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    <script>
+        
+
+        $(function(){
+
+           $('ul li:first').css('color','pink')   //元素的 第一个选择器
+           $('ul li:last').css('color','pink')  //元素的 最后一个选择器
+           $('ul li').eq(2).css('color','#ff8400')  //自由选择器 .eq(这里放他的索引号)
+           $('ul li:odd').css('color','#402042')  // 奇数
+           $('ul li:even').css('color','rgb(0,0,0)'); //偶数
+
+           $('li').parent().css('background-color','#ccc'); // parent 选择到z元素的父级 亲爸爸
+           $('ul').children('li').css('background-color','pink'); //children 元素的子级 选择器
+            // $('ul'.find(li)  子代选择器
+            // siblings  $('ul').siblings('li')   选择他所有兄弟但不包括自己
+            
+        })
+    </script>
+</body>
+</html>

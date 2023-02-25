@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.min.js"></script>
+    <style>
+        div{
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+        }
+
+    </style>
+</head>
+<body>
+    <script>
+        // 如果要把script放到前面就用$(function(){})
+        // $是jquery的顶级对象
+    </script>
+    <div></div>
+    <span></span>
+    <script>
+        // 隐藏
+        $('div').hide();
+
+
+        // 1.DOM对象:用原生js获取过来的对象就是DOM对象
+    var myDiv = document.queryselector( 'div '); // myDiv是DOM对象var mySpan = document. querySelector( ' span '); l// mySpan是DOM对象console.dir(myDiv);
+    // 2. jQuery对象:用jquery方式获取过来的对象是jQuery对象。本质:通过$把DOM元素进行了包装$( ' div ');// $( "div ')是一个jQuery 对象
+    $( 'span '); // $( 'span ')是一个jQuery 对象console.dir($( 'div' ));
+    // 3. jQuery对象只能使用jQuery方法，DOM对象则使用原生的 Javascirpt属性和方法// myDiv.style.display = 'none ' ;
+     myDiv.hide(); myDiv是一个dom对象不能使用jquery里面的hide方法
+    // $( 'div' ).style.display = 'none';这个$( ' div')是一个jQuery对象不能使用原生js 的属性和方法
+
+
+
+    // DOM对象转换jquery对象
+    // 1.DOM对象转换为jQuery对象
+    //我们直接获取视频，得到就是jQuery对象// $( 'video ' );
+    //我们已经使用原生js获取过来DOM对象
+    var myvideo = document.querySelector('video');
+    // $(myvideo).play(); jquery里面没有play 这个方法
+    // 2.jQuery对象转换为DOM对象
+    myvideo.play();
+    $( 'video ')[o].play()
+
+    $( 'video ' ).get(0).play()
+
+
+    // 获取元素 设置样式 隐式迭代
+        console.log($('span'));
+        $('span').css('background','pink');
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+    <!-- <script src="./jquery.min.js"></script> -->
+    <style>
+        body{
+            background-color: #000;
+        }
+
+        img {
+            display: block;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+
+<body class="box">
+    <div>
+        <ul>
+            <li><img data-lazy-src="/img/1.jpg" alt=""></li>
+            <li><img data-lazy-src="/img/2.jpg" alt=""></li>
+            <li><img data-lazy-src="/img/3.jpg" alt=""></li>
+            <li><img data-lazy-src="/img/4.jpg" alt=""></li>
+            <li><img data-lazy-src="/img/1.jpg" alt=""></li>
+            <li><img data-lazy-src="/img/2.jpg" alt=""></li>
+            <li><img data-lazy-src="/img/3.jpg" alt=""></li>
+            <li><img data-lazy-src="/img/4.jpg" alt=""></li>
+            <li><img data-lazy-src="/img/1.jpg" alt=""></li>
+            <li><img data-lazy-src="/img/2.jpg" alt=""></li>
+            <li><img data-lazy-src="/img/3.jpg" alt=""></li>
+            <li><img data-lazy-src="/img/4.jpg" alt=""></li>
+            <li><img data-lazy-src="/img/1.jpg" alt=""></li>
+            <li><img data-lazy-src="/img/2.jpg" alt=""></li>
+            <li><img data-lazy-src="/img/3.jpg" alt=""></li>
+            <li><img data-lazy-src="/img/4.jpg" alt=""></li>
+            <li><img data-lazy-src="/img/1.jpg" alt=""></li>
+            <li><img data-lazy-src="/img/2.jpg" alt=""></li>
+            <li><img data-lazy-src="/img/3.jpg" alt=""></li>
+            <li><img data-lazy-src="/img/4.jpg" alt=""></li>
+            <li><img data-lazy-src="/img/1.jpg" alt=""></li>
+            <li><img data-lazy-src="/img/2.jpg" alt=""></li>
+            <li><img data-lazy-src="/img/3.jpg" alt=""></li>
+            <li><img data-lazy-src="/img/4.jpg" alt=""></li>
+            <li><img data-lazy-src="/img/1.jpg" alt=""></li>
+            <li><img data-lazy-src="/img/2.jpg" alt=""></li>
+            <li><img data-lazy-src="/img/3.jpg" alt=""></li>
+            <li><img data-lazy-src="/img/4.jpg" alt=""></li>
+            <li><img data-lazy-src="/img/1.jpg" alt=""></li>
+            <li><img data-lazy-src="/img/2.jpg" alt=""></li>
+            <li><img data-lazy-src="/img/3.jpg" alt=""></li>
+            <li><img data-lazy-src="/img/4.jpg" alt=""></li>
+        </ul>
+    </div>
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="./EasyLazyload.min.js"></script>
+    <script>
+        lazyLoadInit({
+            coverColor: "white",
+            coverDiv: "<h4>test</h4>",
+            offsetBottom: 0,
+            offsetTopm: 0,
+            showTime: 1100,
+            onLoadBackEnd: function (i, e) {
+                console.log("onLoadBackEnd:" + i);
+            }
+            , onLoadBackStart: function (i, e) {
+                console.log("onLoadBackStart:" + i);
+            }
+        });
+    </script> 
+</body >
+</html >

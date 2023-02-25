@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+        
+        div{
+            background-color: pink;
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+            margin: 10px;
+        }
+        li{
+            background-color: pink;
+            width: 100px;
+            height: 30px;
+            border: 1px solid #000;
+            margin: 10px;
+        }
+    </style>
+</head>
+    <div>1</div>
+    <ul>
+        <li>11</li>
+        <li>22</li>
+        <li>33</li>
+    </ul>
+
+    <a href="http://www.baidu.com"></a>
+    <form action="http://www.baidu.com">
+        <input type="submit" value="提交" name="sub">
+    </form>
+
+    不准右击菜单 不准选中
+<body>
+    <script>
+        var div = document.querySelector('div')
+        // 1.e.target 返回的是触发事件的对象 元素    this 返回的是绑定事件的对象 元素
+        div.addEventListener('click', function(e){    // e 可以传递参数
+            console.log(e.target);  //<div>1</div>
+            console.log(this); 
+        })
+
+        var ul = document.querySelector('ul')
+        ul.addEventListener('click', function(e){    // e 可以传递参数
+            //我们给ul 绑定了事件 那么this 就指向ul
+            console.log(this);
+            //e.target指向我们点击的那个对象，谁触发了这个事件  因为有冒泡
+            console.log(e.target);
+
+            alert('cdmd')
+             //返回事件类型e.tpye
+             console.log(e.type); // click
+        })    
+
+       
+        // 2.阻止默认行为 事件  要求：让连接不跳转 按钮不提交
+
+        // 3.阻止事件冒泡     参数.stopPropagation()            重要
+        var a = document.querySelector('a')
+        a.addEventListener('click', function(e){    // e 可以传递参数
+            // 阻止默认行为 
+            e.preventDefault()   //标准写法 
+            // 阻止事件冒泡
+            e.stopPropagation()
+        })
+
+        // 4.事件委托  
+        // 核心原理  给父节点添加侦听器 利用冒泡去影响每一个子节点
+        var ul = document.querySelector('ul')
+        ul.addEventListener('click', function(e){    // e 可以传递参数
+            // 这样我们利用冒泡 就可以没有获取li就可以点击li 都有弹窗
+            alert('cdmd')
+        })
+
+
+        // 5.禁止右击菜单 contextmenu
+        document.addEventListener('contextmenu', function(e){
+            e.preventDefault()
+        })
+
+        // 6.禁止选中    selectstart
+        document.addEventListener('selectstart', function(e){
+            e.preventDefault()
+        })
+
+
+       
+    </script>
+</body>
+</html>

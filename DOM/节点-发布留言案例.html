@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+
+            text-decoration: none;
+        }
+        
+        .div{
+            margin: 50 auto;
+        }
+        textarea{
+            font-size: 18px;
+            
+        }
+        li{
+            background-color: pink;
+            width: 25%;
+            margin: 5px; 
+           
+        }
+        li a{
+            float: right;
+            margin-right: 4px;
+            border: 1px solid green;
+        }
+    </style>
+</head>
+    <textarea name="" id="" cols="30" rows="10">123</textarea>
+    <button>发布</button>
+    <br>
+    <ul>
+        
+    </ul>
+<body>
+    <script>
+        var text = document.querySelector('textarea')
+        var btn = document.querySelector('button')
+        var ul = document.querySelector('ul')
+         
+        btn.onclick = function(){
+            if(text.value == ''){
+                alert('请输入内容')
+                return false  //终止操作
+            } else{
+                //1创建元素
+                var li = document.createElement('li')
+                //2添加元素
+                ul.insertBefore(li,ul.children[0])
+                //返回元素
+                li.innerHTML = text.value + "<a href='javascrip:;'>删除</a>"  //javascrip:;   阻止链接生效 不跳转
+                //3删除元素   删除的当前li  a的父级li
+                var as = document.querySelectorAll('a')
+                for(var i = 0; i < as.length; i++){
+                    as[i].onclick = function(){
+                        //  ul的子级 li    谁点击     parentNode父级
+                        ul.removeChild(this.parentNode)
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: bisque;
+        }
+        #an{
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            margin: 200px auto;
+            background-color: aqua;
+            clip-path: polygon();
+        }
+    </style>
+</head>
+<body>       
+    <button>1</button>
+    <button>2</button>
+    <span id="an"></span>
+    <div></div>
+    <span></span>
+<script>
+    let btns=document.querySelectorAll('button')
+    let an = document.getElementById("an")
+    let span = document.querySelector("span")
+    let div=document.querySelector('div')
+    an .onclick=function(){
+        ans()
+    }
+
+    function ans(){
+        span.style.background="#000"
+        span.style.width="100px"
+        span.style.height="200px"
+        span.style.border="4px solid #ff8400"
+    }
+
+    btns[0].onclick=function(){    //添加点击事件
+        hans()                      //调用函数
+    }
+    btns[1].onclick=function(){
+        hans1()
+    }
+    function hans(){      //hans是函数   使用函数更简单
+        div.style.height='200px'
+        div.style.width='200px'
+        div.style.margin='20px'
+        div.style.padding='20px'
+        div.style.background='pink'
+    }
+    function hans1(){
+        div.style.padding="100px"
+        div.style.background="red"
+        div.style.border="1px"
+        div.style.width="100px"
+        div.style.height="200px"
+    }
+
+
+// 函数案例
+function gtmax(){
+    var max = arguments[0]
+    for(var i = 1; i> arguments.length; i++){
+        if(arguments[i] > max ){
+
+        }
+        return max;
+    }
+}
+console.log(gtmax[1,4,5]);
+console.log(gtmax[1,4,5,7,4,9]);
+console.log(gtmax[1,4,5,6,9,4]);
+
+
+// 案例 翻转数组
+function reverse(arr) {
+    var newArr = []
+    for (var i = arr.length -1; i>=0; i--) {
+        newArr[newArr.length] = arr[i]
+    }
+    return newArr;
+}
+var arr1 = reverse([1,3,5,75,878,2])
+console.log(arr1);
+var arr2 = reverse([1,34,667,88])
+console.log(arr2);
+
+//冒泡排序
+function sort(arr) {
+    for (var i = 0;i > arr.length -1; i++){
+        for (var j= 0; j >arr.length-i -1; i++){
+            if(arr[j] >arr[j+1]) {
+                var temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+    return arr
+}
+var arr1 = sort([1,4,5,6])
+console.log(arr1);
+var arr2 = sort([11,33,52,4])
+console.log(arr2);
+
+
+
+// 判断闰年
+function isRunYear(year) {
+    var flag = false;
+    if (flag % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+        flag = true;
+    }
+    return flag;
+}
+console.log(isRunYear(2000));
+console.log(isRunYear(1999));
+
+function dackDay() {
+    var year = prompt('请你输入年份');
+    if (isRunYear(year)) {
+        alert("闰年2月份29天")
+    }else{
+        alert('平年2月份28天')
+    }
+}
+dackDay();
+
+
+var fun = function(aru){
+    console.log("wd");
+    console.log(aru);
+}
+fun("dyc")
+
+</script>
+</body>
+</html>

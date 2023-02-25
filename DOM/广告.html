@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .ad{
+            width: 400px;
+            height: 200px;
+            background-color: pink;
+            position: absolute;
+            margin: 100px auto;
+            animation: all 1s;
+            opacity: 0;
+        }
+        .ad .closel{
+            color: #fff;
+            position: absolute;
+            font-size: 1.5rem;
+            cursor: pointer;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="ad">
+        <div class="closel">X</div>
+    </div>
+    <script>
+        let ad = document.querySelector(".ad")
+        setTimeout(function(){
+            ad.style.opacity="1"
+        },2000)
+
+        let closel = document.querySelector(".closel")
+        closel.onclick = function(){
+            ad.style.opacity= "0"
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .header,
+        .banner,
+        .main,
+        .box {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .header {
+            background-color: aqua;
+            height: 400px;
+        }
+
+        .banner {
+            background-color: cornflowerblue;
+            height: 400px;
+        }
+
+        .main {
+            background-color: greenyellow;
+            height: 1000px;
+
+        }
+
+        .slidder-bar {
+            width: 65px;
+            height: 150px;
+
+            background-color: pink;
+            position: fixed;
+            display: none;
+            left: 90%;
+            top: 300px;
+            cursor: pointer;
+        }
+
+        .slidder-bar span {
+            margin-top: 8px;
+        }
+
+        .goBack {
+
+            background-color: rgb(0, 255, 81);
+        }
+
+        .conbg {
+            background-color: red;
+        }
+
+        .box {
+            background-color: rgb(255, 130, 47);
+            height: 1000px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slidder-bar">
+        <span class="conbg">头部区域</span>
+        <span>总结区域</span>
+        <span>主体部分</span>
+        <span>盒子区域</span>
+        <span class="goBack">返回顶部</span>
+
+    </div>
+
+    <div class="header w">头部区域</div>
+    <div class="banner w">总结区域</div>
+    <div class="main w">主体部分</div>
+    <div class="box w">盒子区域</div>
+    <script>
+        $(function () {
+            // 节流阀 互斥锁
+            var flag = true;
+
+            var tobtop = $(".banner").offset().top;
+            toggleTop()
+            // 拖动显示
+            function toggleTop() {
+                if ($(document).scrollTop() >= tobtop) {
+                    $(".slidder-bar").fadeIn()
+                } else {
+                    $(".slidder-bar").fadeOut()
+                }
+            }
+            $(window).scroll(function () {
+                // console.log(11);
+                // console.log($(document).scrollTop());
+                toggleTop()
+                // 滑动主体span的conbg类要加上
+                if (flag) {
+                    $(".w").each(function (i, ele) {
+                        if ($(document).scrollTop() >= $(ele).offset().top) {
+                            // console.log(i);
+                            $(".slidder-bar span").eq(i).addClass("conbg").siblings().removeClass("conbg")
+                        }
+                    })
+                }
+            })
+
+            // 点击返回顶部 animate只有元素才能做动画
+            $(".goBack").click(function () {
+                $("body,html").stop().animate({
+                    scrollTop: 0
+                })
+            })
+
+            // 点击小li
+            $(".slidder-bar span").click(function () {
+                flag = false;
+                // console.log($(this).index());
+                // 当我们每次点击小li 就需要计算出页面要去往的地方
+                // 选出对应的索引号计算出它我offset的top值
+                var current = $(".w").eq($(this).index()).offset().top
+                // 动画
+                $("body,html").stop().animate({
+                    scrollTop: current
+                }, function () {
+                    flag = true;
+                })
+
+                // 点击小li 添加conbg 兄弟移除
+                $(this).addClass("conbg").siblings().removeClass("conbg")
+            })
+
+        })
+    </script>
+</body>
+
+</html>
