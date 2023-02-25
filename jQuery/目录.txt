@@ -9,6 +9,12 @@ myvideo.play();
 $( 'video ')[o].play()
 $( 'video').get(0).play()
 
+循环遍历$ecah()
+  var arr1 = ["aaa", "bbb", "ccc"];
+        $.each(arr1, function (i, val) {
+            console.info(i); //这里是索引值，将输出0，1，2
+            console.info(val); //这里是元素值，将输出aaa，bbb，ccc
+        });
 
 1.jQuery 选择器
 
